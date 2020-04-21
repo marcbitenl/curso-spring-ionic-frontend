@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CategoriasPage } from './categorias';
+import { CategoriasPage } from "./categorias";
 
 @NgModule({
   declarations: [
