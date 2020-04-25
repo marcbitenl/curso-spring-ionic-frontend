@@ -32,30 +32,21 @@ export class HomePage {
     this.menu.swipeEnable(true);
     }
 
-    ionViewDidEnter(){
+    ionViewDidEnter() {
       this.auth.refreshToken()
-      .subscribe(reponse =>{
-        this.auth.successfulLogin(reponse.headers.get('Authorization'));
-        this.navCtrl.setRoot('CategoriasPage');
-      },
-      error =>{});
-      
-      
-     
+        .subscribe(response => {
+          this.auth.successfulLogin(response.headers.get('Authorization'));
+          this.navCtrl.setRoot('CategoriasPage');
+        },
+        error => {});  
     }
-
-
   
-
-  login() {
-    this.auth.authenticate(this.creds)
-    .subscribe(reponse =>{
-      this.auth.successfulLogin(reponse.headers.get('Authorization'));
-      this.navCtrl.setRoot('CategoriasPage');
-    },
-    error =>{});
-    
-    
-   
+    login() {
+      this.auth.authenticate(this.creds)
+        .subscribe(response => {
+          this.auth.successfulLogin(response.headers.get('Authorization'));
+          this.navCtrl.setRoot('CategoriasPage');
+        },
+        error => {});    
+    }
   }
-}

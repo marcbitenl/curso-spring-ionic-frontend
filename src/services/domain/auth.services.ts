@@ -27,25 +27,23 @@ export class AuthService{
     
     refreshToken() {
         return this.http.post(
-        `${API_CONFIG.baseUrl}/auth/refresh_token`,
-         {},
-         {
-            observe: 'response',
-            responseType: 'text'
-         });
+            `${API_CONFIG.baseUrl}/auth/refresh_token`, 
+            {},
+            {
+                observe: 'response',
+                responseType: 'text'
+            });
     }
 
-    successfulLogin(authorizationValue :  string){
+    successfulLogin(authorizationValue : string) {
         let tok = authorizationValue.substring(7);
         let user : LocalUser = {
-            token : tok,
-            email : this.jwtHelper.decodeToken(tok).sub 
+            token: tok,
+            email: this.jwtHelper.decodeToken(tok).sub
         };
         this.storage.setLocalUser(user);
     }
-
-    logout(){
+    logout() {
         this.storage.setLocalUser(null);
     }
-
 }
