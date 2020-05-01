@@ -62,4 +62,11 @@ goOn() {
   
 }
 
+
+checkout(){
+  this.navCtrl.push('PickAddressPage');
+}
+
+
+
 }
