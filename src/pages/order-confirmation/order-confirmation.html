@@ -6,14 +6,12 @@
     <ion-title>Confira seu pedido</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-
   <ion-card>
     <ion-card-header>
       Itens do pedido
     </ion-card-header>
-
+    
     <ion-list>
       <ion-item *ngFor="let item of cartItems">
         <ion-thumbnail item-start>
@@ -24,14 +22,12 @@
         <p class="nolinebreak">{{item.quantidade}}</p>
         <p item-end>{{item.produto.preco * item.quantidade | currency}}</p>
       </ion-item> 
-
       <ion-item>
         <h2>Total</h2>
         <h2 item-end>{{total() | currency}}</h2>
       </ion-item>
     </ion-list> 
   </ion-card>
-
   <ion-card>
       <ion-card-header>
         Cliente
@@ -41,24 +37,22 @@
         <p>{{cliente?.email}}</p>
       </ion-item>
   </ion-card>
-
   <ion-card>
     <ion-card-header>
       Endereço de entrega
     </ion-card-header>
-
+  
     <ion-item>
       <h2>{{endereco?.logradouro}}, {{endereco?.numero}}</h2>
       <p>{{endereco?.complemento}} {{endereco?.bairro}} CEP {{endereco?.cep}}</p>
       <p>{{endereco?.cidade.nome}}, {{endereco?.cidade.estado.nome}}</p>
     </ion-item>
   </ion-card>
-
   <ion-card>
     <ion-card-header>
       Pagamento
     </ion-card-header>
-
+  
     <ion-item *ngIf="pedido.pagamento['@type']=='pagamentoComCartao'">
       <h3>Pagamento com cartão</h3>
       <p>Parcelas: {{pedido.pagamento.numeroDeParcelas}}</p>
@@ -67,4 +61,7 @@
       <h3>Pagamento com boleto</h3>
     </ion-item>
   </ion-card>
+
+  <button ion-button block (click)="checkout()">Confirmar pedido</button>
+  <button ion-button block outline (click)="back()">Voltar</button>
 </ion-content>
